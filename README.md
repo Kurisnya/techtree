@@ -54,13 +54,9 @@ usando qualquer função que retorne um elemento preenchido, aqui vai um exemplo
 
 main
 {
-    elemento novoelemento = minhalista.CRIARELEMENTO();       //CRIARELEMENTO() é uma função imaginária que//retorna um elemento preenchido
-                                                              //retorna um elemento preenchido.
-
+    elemento novoelemento = minhalista.CRIARELEMENTO();       //CRIARELEMENTO() é uma função imaginária que retorna um elemento preenchido
     minhalista.InserirFinal(novoelemento);                    //InserirFinal() é o passo 2.
 }
 
 É isso! Tão simples que dá pra decorar de cabeça.
 Com isso não precisa nem fazer exceções caso a lista tá vazia.
-
-[README.txt](https://github.com/user-attachments/files/24091926/README.txt)
