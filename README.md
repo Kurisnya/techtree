@@ -60,3 +60,10 @@ main
 
 É isso! Tão simples que dá pra decorar de cabeça.
 Com isso não precisa nem fazer exceções caso a lista tá vazia.
+
+
+
+
+NOTA GERAL:
+-> Para transformar o aplicativo de console em um .exe, use o seguinte comando de console dentro da pasta do projeto desejado: dotnet publish -c Release -r win-x64 /p:PublishSingleFile=true
+Fique ciente que isto inclui apenas o executável, ou seja, para a importação completa é necessário criar uma pasta adequada contendo todas as possíveis exigências, igualzinho um videogame.
