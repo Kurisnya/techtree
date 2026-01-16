@@ -1,0 +1,26 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+
+	echo "DATA,HORA EXTRA?,SS,HORAS,MEMO"
+
+	read res
+
+	echo "$res" >> /mnt/c/users/christian.soares/Desktop/2/tarefas.csv
+
+elif [ $1 == "ex" ]; then
+
+		if [ -z $2 ]; then
+
+			echo "Tem certeza que deseja esvaziar o documento? (S/N)"
+			read -rsn1 res2
+			if [ $res2 == "s" ]; then
+				sed -i "${2}d" /mnt/c/users/christian.soares/Desktop/2/tarefas.csv
+			else
+				echo Nada foi excluido....
+			fi
+		else
+			sed -i "${2}d" /mnt/c/users/christian.soares/Desktop/2/tarefas.csv
+		fi
+elif [ $1 == "s" ]; then
+		nl /mnt/c/users/christian.soares/Desktop/2/tarefas.csv
+fi
