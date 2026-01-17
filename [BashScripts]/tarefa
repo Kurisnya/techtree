@@ -14,7 +14,7 @@ elif [ $1 == "ex" ]; then
 
 			echo "Tem certeza que deseja esvaziar o documento? (S/N)"
 			read -rsn1 res2
-			if [ $res2 == "s" ]; then
+			if [ $res2 == "x" ]; then
 				sed -i "${2}d" <CAMINHO DO CSV>
 			else
 				echo Nada foi excluido....
