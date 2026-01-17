@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $# -eq 0 ]; then
 
-	echo "DATA,HORA EXTRA?,SS,HORAS,MEMO"
+	echo "DATA,HORA EXTRA?,SS,HORAS,MEMO" $(date +%d/%m/%Y)
 
 	read res
 
