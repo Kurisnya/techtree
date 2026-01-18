@@ -23,5 +23,5 @@ elif [ $1 == "x" ]; then
 			sed -i "${2}d" /mnt/c/users/christian.soares/Desktop/2/tarefas.csv
 		fi
 elif [ $1 == "s" ]; then
-		nl <CAMINHO DO CSV>
+		nl -ba <CAMINHO DO CSV>
 fi
