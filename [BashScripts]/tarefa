@@ -8,13 +8,13 @@ if [ $# -eq 0 ]; then
 
 	echo "$res" >> <CAMINHO DO CSV>
 
-elif [ $1 == "ex" ]; then
+elif [ $1 == "x" ]; then
 
 		if [ -z $2 ]; then
 
 			echo "Tem certeza que deseja esvaziar o documento? (S/N)"
 			read -rsn1 res2
-			if [ $res2 == "x" ]; then
+			if [ $res2 == "s" ]; then
 				sed -i "${2}d" <CAMINHO DO CSV>
 			else
 				echo Nada foi excluido....
