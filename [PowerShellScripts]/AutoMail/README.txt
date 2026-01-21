@@ -1,5 +1,5 @@
 Introdução
-Estes são scripts que automatizam o disparo de e-mails para outros colaboradores.
+Estes são scripts que automatizam o disparo de e-mails para outros colaboradores, usando o outlook.
 
 Modo de uso
 1. Escreva o assunto dos e-mails:
@@ -34,5 +34,6 @@ exemplo4@exemplo.com
 
 5. Lançar e-mails:
 Após completar os passos anteriores, execute o script "email.ps1" usando o PowerShell, faça isso com Botão Direito > Executar com o PowerShell.
+
 
 Aguarde os e-mails serem enviados.
