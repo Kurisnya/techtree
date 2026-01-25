@@ -1,16 +1,35 @@
 #!/bin/bash
 
+
 if [ $# -eq 0 ]; then
 
 	echo "Hoje é: " $(date +%d/%m/%Y)
 	read res
-	echo ",$res" >> ~/bin/tasks.csv
+	echo "|$res" >> ~/bin/tasks.csv
 
 elif [ $1 == "check" ]; then
 
-	awk -F',' -v linha="$2" 'NR==linha {$1="[FEITO]"} {print}' OFS=',' ~/bin/tasks.csv > ~/bin/tmp.csv
+	awk -F'|' -v linha="$2" 'NR==linha {$1="SS"} {print}' OFS='|' ~/bin/tasks.csv > ~/bin/tmp.csv
 	mv tmp.csv tasks.csv
+
+	awk -F'|' '
+		{
+			prioridade = ($1 ~ /SS/) ? 0 : 1
+			print prioridade "|" $0
+		}
+	' ~/bin/tasks.csv | sort -t'|' -k1,1n | cut -d'|' -f2- > tmp.csv
+	mv tmp.csv ~/bin/tasks.csv
+	
+	nl -ba ~/bin/tasks.csv
 elif [ $1 == "s" ]; then
+
+	awk -F'|' '
+		{
+			prioridade = ($1 ~ /SS/) ? 0 : 1
+			print prioridade "|" $0
+		}
+	' ~/bin/tasks.csv | sort -t'|' -k1,1n | cut -d'|' -f2- > tmp.csv
+	mv tmp.csv ~/bin/tasks.csv
 
 	nl -ba ~/bin/tasks.csv
 
