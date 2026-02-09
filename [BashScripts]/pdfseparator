@@ -1,0 +1,56 @@
+#!/bin/bash
+trap 'echo "Interrompido. Limpando arquivos temporários..."; rm -f NOVINHO/pagina_*.png; exit 1' INT
+mkdir -p NOVINHO
+
+if [ $1 == "new" ]; then
+    {
+        echo "Convertendo páginas, aguarde..."
+        
+        rm -rf pdfseparatorFile/*
+
+        for ((i=1; i<=$3; i++)); do
+        printf -v N "%02d" "$i"
+        pdftoppm -png -r 100 -singlefile -f "$i" -l "$i" "/home/kuris/3/Slides/$2.pdf" "NOVINHO/pagina_$N"; \
+        echo "Criando página $i..."
+        done
+
+        echo "Tudo pronto! $3 páginas convertidas com êxito!"
+
+        echo "Criando documento em .odt..."
+        for img in NOVINHO/pagina_*.png; do
+          echo "![]($img){ width=100% }"
+          echo
+        done > imagens.md
+        pandoc imagens.md \
+        --reference-doc=/home/kuris/3/Prints/Template.odt \
+        -o $2.odt
+        echo "Documento criado com êxito!"
+        echo "Gerando PDF..."
+        libreoffice --headless --convert-to pdf $2.odt
+
+        mv /home/kuris/$2.pdf ~/bin
+
+        echo "PDF gerado com êxito!"
+        echo "Caminho do documento: ~/bin/$2.pdf"
+
+        rm NOVINHO/*
+        rmdir NOVINHO
+
+
+
+    }
+
+elif [ $1 == "get" ]; then
+    {
+        for img in pdfseparatorFile/pagina_*.png; do
+          echo "![]($img){ width=100% }"
+          echo
+        done > imagens.md
+        pandoc imagens.md \
+        --reference-doc=/home/kuris/3/Prints/Template.odt \
+        -o NewSlide.odt
+        echo "Imagem criada com êxito!"
+        echo "Caminho do arquivo ~/bin/NewSlide.odt"
+
+    }
+fi
