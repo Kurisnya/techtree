@@ -3,7 +3,7 @@ PDF recebido > Páginas transformadas em .png > .png são colocados dentro de um
 
 Esse script foi criado para ser usado juntamente com o pdfunite para juntar vários pdfs processados e transformá-los em um único pdf.
 
-ERRO: O script não está finalizado e precisa tratar de uma excessão no final do processo. Ao roda-lo no momento, veriique se o arquivo final tem o número certo de páginas, caso não tenha, rode denovo.
+ERRO: O script não está finalizado e precisa tratar de uma excessão no final do processo. Ao roda-lo no momento, verifique se o arquivo final tem o número certo de páginas, caso não tenha, rode denovo.
 
 -------------------------------------------------
 permitir - Script que recebe outro script como parâmetro e valida-o para rodar.
