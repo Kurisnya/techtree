@@ -1,0 +1,17 @@
+pfdseparator - Script usado para processar um pdf e tranforma-lo em um pdf modificado. O processo funciona da maneira seguinte:
+PDF recebido > Páginas transformadas em .png > .png são colocados dentro de um tamplate .odt > arquivo de texto .odt é criado > arquivo final se transforma em pdf.
+
+Esse script foi criado para ser usado juntamente com o pdfunite para juntar vários pdfs processados e transformá-los em um único pdf.
+
+ERRO: O script não está finalizado e precisa tratar de uma excessão no final do processo. Ao roda-lo no momento, veriique se o arquivo final tem o número certo de páginas, caso não tenha, rode denovo.
+
+-------------------------------------------------
+permitir - Script que recebe outro script como parâmetro e valida-o para rodar.
+-------------------------------------------------
+publishwin - Script para App.NET que publica o app desejado.
+-------------------------------------------------
+tarefa - Script que cria, remove e marca tarefas de trabalho que o usuário escreve, separadas por "|".
+-------------------------------------------------
+task -  Script que cria, remove e marca tarefas livres que o usuário escreve, boa para anotações rápidas que com certeza vou esquecer depois.
+-------------------------------------------------
+OBS: Nenhum script possui --help ainda, então é necessário abrir o conteúdo para poder saber os comandos.
