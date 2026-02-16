@@ -1,27 +1,38 @@
 #!/bin/bash
-if [ $# -eq 0 ]; then
 
-	echo "DATA,HORA EXTRA?,SS,HORAS,MEMO"
-	echo "Hoje é: " $(date +%d/%m/%Y)
+tar=""
+x=""
+ch=""
 
-	read res
+while [[ $# -gt 0 ]]; do
+	case "$1" in 
+	-tar)
+		tar="$2"
+		echo "|$tar" >> ~/bin/other/tarefas.csv
+		shift 2
+		;;
+	s)
+		nl -ba ~/bin/other/tarefas.csv
+		shift 1
+		;;
+	-x)
+		x="$2"
+		sed -i "${2}d" ~/bin/other/tarefas.csv
+		nl -ba ~/bin/other/tarefas.csv
+		shift 2
+		;;
+	-ch)
+		ch=$2
+		awk -F'|' -v linha="$ch" 'NR==linha {$1="[SS]"} {print}' OFS='|' ~/bin/other/tarefas.csv > ~/bin/other/tmp.csv
+        mv ~/bin/other/tmp.csv ~/bin/other/tarefas.csv
+		nl -ba ~/bin/other/tarefas.csv
+		;;
+	*)
+		echo "ERRO: parâmetros passados"
+		exit 1
+		;;
+	esac
+done
 
-	echo "$res" >> <CAMINHO DO CSV>
 
-elif [ $1 == "x" ]; then
 
-		if [ -z $2 ]; then
-
-			echo "Tem certeza que deseja esvaziar o documento? (S/N)"
-			read -rsn1 res2
-			if [ $res2 == "s" ]; then
-				sed -i "${2}d" <CAMINHO DO CSV>
-			else
-				echo Nada foi excluido....
-			fi
-		else
-			sed -i "${2}d" /mnt/c/users/christian.soares/Desktop/2/tarefas.csv
-		fi
-elif [ $1 == "s" ]; then
-		nl -ba <CAMINHO DO CSV>
-fi
